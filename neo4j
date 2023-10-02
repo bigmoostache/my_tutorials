@@ -1,0 +1,20 @@
+Docker image for neo4j
+
+```bash
+sudo docker pull neo4j
+```
+
+Create volume for neo4j
+```bash
+sudo docker volume create neo4j-data
+```
+
+Run neo4j
+```bash
+sudo docker run \
+    --publish=7474:7474 --publish=7687:7687 \
+    --volume=neo4j-data:/data \
+    -d neo4j
+```
+
+YCiLEGTXJb55mWD
