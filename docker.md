@@ -143,3 +143,25 @@ docker ps | grep your_model_image_name
 ```
 
 This will display only the containers running with the image `your_model_image_name`.
+
+
+To remove all stopped containers, you can use the combination of `docker ps` to list the containers and `docker rm` to remove them.
+
+Here's the command to remove all stopped containers:
+
+```bash
+docker rm $(docker ps -a -f status=exited -q)
+```
+
+Here's a breakdown:
+
+- `docker ps -a -f status=exited -q`: Lists the IDs of all stopped containers.
+- `docker rm`: Removes the containers.
+
+Additionally, Docker provides a convenient command to clean up resources:
+
+```bash
+docker container prune
+```
+
+This command will remove all stopped containers and prompt you for confirmation before doing so. It's a more straightforward approach if you're comfortable removing all stopped containers.
