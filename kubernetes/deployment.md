@@ -33,7 +33,7 @@ spec:
       - name: dummyapi-container
         image: drazou/dummyapi:v1
         ports:
-        - containerPort: 8000
+        - containerPort: 8087
 ```
 
 3. **Service**: To expose your pod inside the cluster on port `6678`, you'll need a Service resource.
@@ -51,7 +51,7 @@ spec:
   ports:
     - protocol: TCP
       port: 6678
-      targetPort: 8000
+      targetPort: 8087
 ```
 
 To deploy these resources, first create the namespace, then the deployment, and finally, the service:

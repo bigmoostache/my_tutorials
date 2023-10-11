@@ -224,6 +224,13 @@ kubeadm join 192.168.74.10:6443 --token l431j0.0tz0bbuu7hj64lw5 \
         --discovery-token-ca-cert-hash sha256:1234567890 
 ```
 
+You may have to change your host name to avoid conflicts. 
+
+```bash
+sudo hostname c2-7-gra11-new
+echo "c2-7-gra11-new" | sudo tee /etc/hostname
+```
+
 
 ## 10. Accessing the Kubernetes Dashboard
 
