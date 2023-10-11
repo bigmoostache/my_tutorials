@@ -166,7 +166,7 @@ TODO? I don't think this is needed anymore.
 ```bash
 sudo su
 sudo rm /etc/kubernetes/kubelet.conf /etc/kubernetes/pki/ca.crt
-kubeadm init --pod-network-cidr=10.10.0.0/16 \
+kubeadm init  \
 --apiserver-advertise-address=162.19.69.33 \
 --cri-socket=unix:///var/run/cri-dockerd.sock # execute without crio-socket, if an error pops, copy paste the docker socket path
 ```
