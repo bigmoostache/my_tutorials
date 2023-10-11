@@ -318,7 +318,7 @@ kubeadm reset --cri-socket=unix:///var/run/cri-dockerd.sock
 rm /etc/kubernetes/kubelet.conf 
 rm /home/ubuntu/.kube/config
 rm /etc/kubernetes/pki/ca.crt 
-rm /etc/cni/net.d
+rm -rf /etc/cni/net.d
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 ```
