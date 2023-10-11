@@ -314,8 +314,8 @@ kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"
 ## 11. To kill everything
 
 ```bash
-kubeadmin reset --cri-socket=unix:///var/run/cri-dockerd.sock
-rm /etc/kubernetes/kubelet.conf /etc/kubernetes/pki/ca.crt
+kubeadm reset --cri-socket=unix:///var/run/cri-dockerd.sock
+rm /etc/kubernetes/kubelet.conf /etc/kubernetes/pki/ca.crt /home/ubuntu/.kube/config
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 ```
