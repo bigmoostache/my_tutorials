@@ -319,6 +319,8 @@ rm /etc/kubernetes/kubelet.conf
 rm /home/ubuntu/.kube/config
 rm /etc/kubernetes/pki/ca.crt 
 rm -rf /etc/cni/net.d
+rm -rf /etc/kubernetes/manifests
+mkdir /etc/kubernetes/manifests
 docker kill $(docker ps -q)
 docker rm $(docker ps -a -q)
 ```
