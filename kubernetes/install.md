@@ -14,7 +14,18 @@ sudo ufw allow 2379
 sudo ufw allow 2380
 sudo ufw allow 80
 sudo ufw allow 443
+sudo ufw allow 8443
 sudo ufw allow 22
+sudo ufw allow 10250/tcp
+sudo ufw allow 10257/tcp
+sudo ufw allow 10259/tcp
+sudo ufw allow 6443/tcp
+sudo ufw allow 2379/tcp
+sudo ufw allow 2380/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 8443/tcp
+sudo ufw allow 22/tcp
 sudo ufw enable
 ```
 
@@ -31,7 +42,7 @@ sudo modprobe br_netfilter
 Copy the below contents in this file.. 
 
 ```/etc/modules-load.d/k8s.conf
-nano /etc/modules-load.d/k8s.conf
+sudo nano /etc/modules-load.d/k8s.conf
 br_netfilter
 ```
 
@@ -89,6 +100,7 @@ TODO
 In the file **/etc/docker/daemon.json** write
 
 ```/etc/docker/daemon.json
+sudo nano /etc/docker/daemon.json
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
@@ -205,7 +217,7 @@ You should now deploy a pod network to the cluster. I would suggest using Weave 
 For Weave net - as of this writing, the following command works:
 
 ```bash
-$ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 ```
 
 ## 8. Reprinting a join command
@@ -297,4 +309,13 @@ Finally, retrieve the token:
 
 ```bash
 kubectl get secret admin-user -n kubernetes-dashboard -o jsonpath={".data.token"} | base64 -d
+```
+
+## 11. To kill everything
+
+```bash
+kubeadmin reset --cri-socket=unix:///var/run/cri-dockerd.sock
+rm /etc/kubernetes/kubelet.conf /etc/kubernetes/pki/ca.crt
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
 ```
