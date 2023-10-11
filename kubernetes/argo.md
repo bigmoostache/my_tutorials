@@ -44,9 +44,11 @@ Use `argocd login --core` to [configure](./user-guide/commands/argocd_login.md) 
 Download the latest Argo CD version from [https://github.com/argoproj/argo-cd/releases/latest](https://github.com/argoproj/argo-cd/releases/latest). More detailed installation instructions can be found via the [CLI installation documentation](cli_installation.md).
 
 Also available in Mac, Linux and WSL Homebrew:
-
+https://argo-cd.readthedocs.io/en/stable/cli_installation/
 ```bash
-brew install argocd
+curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+rm argocd-linux-amd64
 ```
 
 ## 3. Access The Argo CD API Server
